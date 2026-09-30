@@ -1,0 +1,39 @@
+name: Windows build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Publish self-contained app
+        shell: pwsh
+        run: ./Build.ps1
+      - name: Check palettes and preference compatibility without audio hardware
+        shell: pwsh
+        run: |
+          $process = Start-Process -FilePath './artifacts/publish/win-x64/AppVolumeController.exe' -ArgumentList '--logic-test' -WindowStyle Hidden -PassThru
+          if (-not $process.WaitForExit(60000)) { $process.Kill(); throw 'Checks timed out.' }
+          Get-Content './artifacts/publish/win-x64/logic-test.log'
+          if ($process.ExitCode -ne 0) { throw "Checks failed: $($process.ExitCode)" }
+          if (-not (Test-Path './artifacts/publish/win-x64/HELP.html')) { throw 'Offline help is missing.' }
+      - name: Retain check log
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: verification-log
+          path: artifacts/publish/win-x64/logic-test.log
+          if-no-files-found: ignore
+          retention-days: 7

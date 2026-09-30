@@ -1,0 +1,49 @@
+name: Bug report
+description: Report unexpected app behavior or an accessibility issue.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "Please check the user guide and existing issues first. Do not share passwords, private audio, or your full preferences file."
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      placeholder: "0.1.0-beta.2"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version and CPU architecture
+      placeholder: "Windows 11, Intel/AMD x64"
+    validations:
+      required: true
+  - type: dropdown
+    id: installation
+    attributes:
+      label: Installation type
+      options:
+        - Installer
+        - Portable ZIP
+        - Built from source
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the audio application and output device when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual results
+    validations:
+      required: true
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Additional context
+      description: For accessibility issues, include text size, Windows scaling, theme, keyboard steps, and screen reader/version. Screenshots are optional.

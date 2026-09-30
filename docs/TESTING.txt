@@ -1,0 +1,61 @@
+APP VOLUME CONTROLLER - {{VERSION}}
+Public Windows beta
+
+Official downloads: https://github.com/XayerMorgan/AppVolumeController/releases
+User guide: https://github.com/XayerMorgan/AppVolumeController/blob/main/docs/USER-GUIDE.md
+
+INSTALL
+1. Run AppVolumeController-{{VERSION}}-win-x64-Setup.exe.
+2. Follow the installer. A desktop shortcut is optional.
+3. Open App Volume Controller from the Start menu.
+4. Choose Help or press F1 for the included offline user guide (HELP.html).
+
+Requirements: Windows 10 22H2 (build 19045) or Windows 11, 64-bit Intel/AMD,
+and a working playback device. This package includes .NET and installs only
+for your Windows account; no administrator access or account signup is needed.
+It works offline after download. Windows on ARM has not been tested.
+
+This beta is unsigned. Windows may show an unknown-publisher or SmartScreen
+warning. Download from the official repository and decide whether you trust
+the release before running it. SHA256SUMS.txt lets you compare your download
+with the published copy; it is not a digital signature. Do not disable Windows
+security protections to install the app.
+
+PORTABLE OPTION
+Extract the entire Portable.zip into one folder, then run
+AppVolumeController.exe. Keep the extracted files together. The portable
+version uses the same preferences location as the installed app.
+
+TRY THESE THINGS
+- Play sound in two apps. They should appear within about three seconds.
+- Move each app's volume slider and toggle Mute. Verify the intended app changes.
+- Test master output separately; it affects the default Windows playback device.
+- Mark a favorite; try search and Favorites only.
+- Open Appearance; try light/dark/high contrast, accents, and larger text.
+- Use Tab, arrow keys, and Space to operate the controls.
+- Open Help with F1 and check that the guide works while offline.
+- Close and reopen the app. Check that favorites and appearance are retained.
+- Remember my volume changes is optional and off by default. If enabled, values
+  you changed here are restored when applications create new audio sessions.
+
+Report issues at https://github.com/XayerMorgan/AppVolumeController/issues/new/choose
+Include the build version ({{VERSION}}), Windows version,
+output device, app involved, what you did, expected result, actual result,
+and a screenshot if useful. Do not include private audio or passwords.
+
+UPGRADE / REMOVE
+Close the app before installing another build. Run the newer installer over
+the existing installation; favorites and settings are retained.
+Uninstall from Windows Settings > Apps > Installed apps > App Volume Controller.
+Uninstalling keeps your preferences so they are available if you reinstall.
+Preferences: %LOCALAPPDATA%\AppVolumeController\preferences.json
+
+LIMITATIONS
+The app controls Windows playback sessions, not microphones or exclusive-mode
+audio. Some apps appear only after playing sound. A grouped app slider controls
+all its sessions. Screen-reader behavior and switching between monitors with
+different scaling still need hands-on testing. No background service, startup
+task, telemetry, or automatic updater is installed.
+
+Third-party license notices are included in the licenses folder.
+App Volume Controller is provided under the MIT license; see LICENSE.txt.
